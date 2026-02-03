@@ -6,16 +6,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TestController {
 
-	private final SessionBean sessionBean;
-	
-	public TestController(SessionBean sessionBean)
-	{
-		this.sessionBean=sessionBean;
+	private final RequestBean requestBean;
+
+	public TestController(RequestBean requestBean) {
+		this.requestBean=requestBean;
 	}
-	@GetMapping("/session-test")
-	public String sessiontTest() {
-        return "Session ID: " + sessionBean.getSessionId()
-        + " | Bean hashCode: " + sessionBean.hashCode();
+	
+	@GetMapping("/test")
+	public String testRequestScope()
+	{
+		return "Request ID: " + requestBean.getRequestId()
+        + " | Bean hashCode: " + requestBean.hashCode();
 
 	}
 }
